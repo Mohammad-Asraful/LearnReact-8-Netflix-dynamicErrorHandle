@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Card from "./Card";
+import Data from './Data'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const h1Style = {
+   color: 'blue',
+   textAlign: 'center',
+   backgroundColor: 'yellow',
+   padding: '5px'
 }
 
-export default App;
+/* const tryCondition = () => {
+   const favseries = 'netflix'
+   // if else condition
+   if (favseries == 'netflix') {
+      return <Card />
+   } else {
+      return 'nothing'
+   }
+   // ternary operator
+   favseries === 'netflix' ? <Card /> : 'nothing'
+
+} */
+
+const App = () => (
+   <>
+      <h1 style={h1Style}>Details of students</h1>
+      {
+         Data.map(properties => {
+            return (
+               <Card
+                  key={properties.id}
+                  title={properties.myName}
+                  age={properties.age}
+                  department={properties.department}
+                  link={properties.link}
+               />
+            )
+         })
+      }
+
+   </>
+)
+
+export default App
